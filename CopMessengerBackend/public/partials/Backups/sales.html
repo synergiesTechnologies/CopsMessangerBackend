@@ -1,0 +1,48 @@
+<div class="row" ng-controller="BillingCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="widget widget-table action-table leftMargin30px">
+        <div class="widget-header"> <i class="icon-bullseye"></i>
+            <h3>Sales Bills</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content padding10px">
+	    <div ng-show="records.length" class="filterClass"><input ng-model="filterKey" id="search" class="login" placeholder="Filter text" />&nbsp;&nbsp;<input type="number" min="5" max="100" class="width62" ng-model="pageSize"></div>
+            <table class="table table-striped table-bordered allBorder">
+		<thead>
+                  <tr>
+		    <th class="width5percentTD">#</th>
+                    <th class="width10percentTD">Bill Number</th>
+		    <th class="width10percentTD">Date</th>
+		    <th class="width25percentTD">Customer Name</th>
+		    <th class="width10percentTD">Type</th>
+		    <th class="width5percentTD">Taxable</th>
+		    <th class="width10percentTD">Form H Status</th>
+		    <th class="width10percentTD">Amount</th>
+		    <th class="width5percentTD alignCenter">Status</th>
+                    <th class="alignCenter"><a href="javascript:void(0);" ng-click="addNewBill()" class="btn" title="Add Bill"><i class="icon-plus"> </i></a></th>
+                  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-show="!records.length"><td colspan="10" class="alignCenter">No records</td></tr>
+		  
+                  <tr dir-paginate="aRecord in records | itemsPerPage:pageSize | filter:filterKey" current-page="currentPage">
+		    <td>{{pageSize * (currentPage - 1) + ($index + 1)}}</td>
+                    <td>{{aRecord.bill_number}}</td>
+		    <td>{{aRecord.date}}</td>
+		    <td>{{aRecord.customer_name}}, {{aRecord.customer_fulladdress}}</td>
+		    <td>{{aRecord.type}}</td>
+		    <td><span class="greenColor" ng-show="aRecord.taxable == 'Y'"><b>Yes</b></span><span ng-show="aRecord.taxable == 'N'">No</span></td>
+		    <td><span class="greenColor" ng-show="aRecord.formh_received == 'Yes'">Received</span><span class="redColor" ng-show="aRecord.formh_received == 'No'">Pending</span><span ng-show="aRecord.formh_received == 'NA'">NA</span></td>
+		    <td class="alignRight">{{aRecord.total_amount}}</td>
+		    <td class="alignCenter"><img data-ng-src="img/{{aRecord.status}}.png" class="imageStatusStyle" title="{{aRecord.status}}" /></td>
+                    <td class="alignCenter">
+			<a href="javascript:void(0);" ng-click="previewBillRecord(aRecord)" class="btn" title="Preview Bill"><i class="icon-eye-open"> </i></a>
+                    </td>
+                  </tr>
+		</tbody>
+            </table>
+	    <dir-pagination-controls class="floatRight"></dir-pagination-controls>
+        </div>
+        <!-- /widget-content --> 
+    </div>
+    <!-- /widget -->	  
+</div> <!-- /row -->

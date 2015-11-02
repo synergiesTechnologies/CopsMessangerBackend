@@ -1,0 +1,241 @@
+<div class="row" ng-controller="AddBillCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="widget widget-table action-table leftMargin30px">
+        <div class="widget widget-table action-table">
+            <div class="widget-header printLink"> <i class="icon-bullseye"></i>
+              <h3>Bill Preview</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content padding10px">
+		<div ng-show="sale.type" class="watermarkNGF">NGF</div>
+		<div ng-show="sale.status['optId'] === 'Cancelled'" class="watermarkCancelled">Cancelled</div>
+		<table class="width100percent" align="center" >
+		    <tr ng-show="sale.type">
+			<td class="width100percent topPadding10px bottomPadding10px" align="center">
+			    <table class="width99percent borderBlack1px" >
+				<tr>
+				    <td class="width100percent padding10px" align="center">
+					<table class="width100percent" align="center">
+					    <tr>
+						<td class="previewWidth30Percent fontSize11px" align="left">
+						    <label class="fontWeigntBold textDecUnderline">TAXINVOICE</label>
+						    <label class="fontWeigntBold">CASH/CREDIT</label>
+						    <label>&nbsp;</label>
+						    <label>TIN No.: {{profile.tin_number}}</label>
+						</td>
+						<td class="{{form8bClass}}" align="center">
+						    <h3 class="bottomMargin5px">{{profile.name}}</h3>
+						    <label class="fontWeigntBold fontSize12px">{{profile.address}}</label>
+						    <label class="fontWeigntBold fontSize12px">{{profile.city}}</label>
+						    <label class="fontWeigntBold fontSize12px">{{profile.state}} - {{profile.pincode}}</label>
+						    <label class="fontWeigntBold fontSize12px">Phone: {{profile.phone}}</label>
+						</td>
+						<td class="previewWidth30Percent fontSize11px" align="right">
+						    <label ng-show="sale.type.id === 'Form No. 8'">The Kerala Value Added Tax Rules, 2005</label>
+						    <label><strong>{{sale.type.name}}</strong></label>
+						    <label>(For VAT Dealers other than manufactures)</label>
+						    <label>[See Rules 58(10)]</label>
+						    <label ng-show="sale.type.id === 'Form No. 8B'"><b>{{sale.bill_number}}</b>&nbsp;&nbsp;{{sale.date | date:"dd/MM/yyyy"}}</label>
+						</td>
+					    </tr>
+					</table>
+				    </td>
+				</tr>
+				<tr ng-show="sale.type.id === 'Form No. 8'">
+				    <td class="width100percent padding10px" align="center" >
+					<table class="width100percent borderBlack1px fontSize12px">
+					    <tr>
+						<td align="center" class="rightBorderBlack1px bottomBorderBlack1px"><strong>Invoice No. & Date</strong></td>
+						<td align="center" class="rightBorderBlack1px bottomBorderBlack1px"><strong>Delivery Note No. & Date</strong></td>
+						<td align="center" class="rightBorderBlack1px bottomBorderBlack1px"><strong>Purchase Order No. & Date</strong></td>
+						<td align="center" class="rightBorderBlack1px bottomBorderBlack1px"><strong>Despatch Document No. & Date (if any)</strong></td>
+						<td align="center" class="bottomBorderBlack1px"><strong>Terms of Delivery (if any)</strong></td>
+					    </tr>
+					    <tr>
+						<td align="center" class="rightBorderBlack1px"><b>{{sale.bill_number}}</b><br />{{sale.date | date:"dd/MM/yyyy"}}</td>
+						<td align="center" class="rightBorderBlack1px">{{sale.delivery_note}}</td>
+						<td align="center" class="rightBorderBlack1px">{{sale.purchase_order}}</td>
+						<td align="center" class="rightBorderBlack1px">{{sale.despatch_doc}}</td>
+						<td align="center">{{sale.delivery_terms}}</td>
+					    </tr>
+					</table>
+				    </td>
+				</tr>
+				<tr>
+				    <td class="width100percent padding10px" align="center" >
+					<table class="width100percent fontSize12px">
+					    <tr>
+						<td class="alignLeft dottedBottomBorder">
+						    <label><b>Name & address of purchasing Dealer:</b><span> {{customer.name}}</span></label>
+						</td>
+					    </tr>
+					    <tr ng-show="customer.fulladdress"><td class="alignLeft dottedBottomBorder">{{customer.fulladdress}}</td></tr>
+					    <tr>
+						<td align="center" class="width100percent">
+						    <table class="width100percent fontSize11px">
+							<tr>
+							    <td class="dottedBottomBorder">
+								<label><b>Tele No.:</b><span> {{customer.phone}}</span></label>
+							    </td>
+							    <td class="dottedBottomBorder">
+								<label><b>Mobile:</b><span> {{customer.mobile}}</span></label>
+							    </td>
+							    <td class="dottedBottomBorder">
+								<label><b>e-mail:</b> <span> {{customer.email}}</span></label>
+							    </td>
+							</tr>
+							<tr>
+							    <td class="dottedBottomBorder">
+								<label><b>Fax:</b><span> {{customer.fax}}</span></label>
+							    </td>
+							    <td class="dottedBottomBorder" ng-show="!customer.pin_number">
+								<label><b>TIN:</b><span> {{customer.vat_number}}</span></label>
+							    </td>
+							    <td class="dottedBottomBorder" ng-show="customer.pin_number">
+								<label><b>PIN:</b><span> {{customer.pin_number}}</span></label>							    
+							    </td>
+							    <td class="dottedBottomBorder">
+								<label><b>CST Reg. No.:</b><span> {{customer.cst_number}}</span></label>
+							    </td>
+							</tr>
+						    </table>
+						</td>
+					    </tr>
+					</table>
+				    </td>
+				</tr>
+				<tr>
+				    <td class="width100percent padding10px" align="center" >
+					<table class="width100percent fontSize11px borderBlack1px alignCenter">
+					    <tr>
+						<th class="rightBorderBlack1px verticalTopAlign">Sl No.</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Commodity/Item</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Rate of tax</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Unit Price</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Quantity</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Net Value</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Taxable Value</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Tax Amount</th>
+						<th class="rightBorderBlack1px verticalTopAlign">Total</th>
+					    </tr>
+					
+					    <tr>
+						<th class="rightBorderBlack1px fontSize10px">A</th>
+						<th class="rightBorderBlack1px fontSize10px">B</th>
+						<th class="rightBorderBlack1px fontSize10px">C</th>
+						<th class="rightBorderBlack1px fontSize10px">D</th>
+						<th class="rightBorderBlack1px fontSize10px">E</th>
+						<th class="rightBorderBlack1px fontSize10px">F</th>
+						<th class="rightBorderBlack1px fontSize10px">G</th>
+						<th class="rightBorderBlack1px fontSize10px">H</th>
+						<th class="rightBorderBlack1px fontSize10px">I = (G+H)</th>
+					    </tr>
+					
+					    <tr><td colspan="14" class="bottomBorderBlack1px margin0padding0height1px"></td></tr>
+					
+					    <tr ng-repeat="anAddedPdt in sale_products">
+						<td class="rightBorderBlack1px fontSize12px">{{($index + 1)}}</td>
+						<td class="rightBorderBlack1px fontSize12px alignLeft">
+						    <span ng-show="($index + 1) === 1 && customer.single_commodity_name">{{customer.single_commodity_name}}</span>
+						    <span ng-show="($index + 1) !== 1 && customer.single_commodity_name">&nbsp;</span>
+						    <span ng-show="!customer.single_commodity_name">{{anAddedPdt.name}}</span>
+						</td>
+						<td class="rightBorderBlack1px fontSize12px">
+						    <span ng-show="customer.is_taxable['optId'] == 'Y'">{{fin_year_info['tax_rate']}} %</span>
+						    <span ng-show="customer.is_taxable['optId'] == 'N'">&nbsp;</span>
+						</td>
+						<td class="rightBorderBlack1px fontSize12px alignRight"><span ng-show="anAddedPdt.price_per_kg > 0">{{anAddedPdt.price_per_kg}}</span><span ng-show="anAddedPdt.price_per_packet > 0">{{anAddedPdt.price_per_packet}}<span ng-show="anAddedPdt.quantity_per_packet != 'NA'">&nbsp;({{anAddedPdt.quantity_per_packet}})</span></span></td>
+						<td class="rightBorderBlack1px fontSize12px"><span ng-show="anAddedPdt.quantity_kg > 0">{{anAddedPdt.quantity_kg}} kg</span><span ng-show="anAddedPdt.quantity_packets > 0">{{anAddedPdt.quantity_packets}} packets</span></td>
+						<td class="rightBorderBlack1px fontSize14px alignRight">{{anAddedPdt.net_amount}}</td>
+						<td class="rightBorderBlack1px fontSize12px alignRight">
+						    <span ng-show="customer.is_taxable['optId'] == 'Y'">{{anAddedPdt.net_amount}}</span>
+						    <span ng-show="customer.is_taxable['optId'] == 'N'">&nbsp;</span>
+						</td>
+						<td class="rightBorderBlack1px fontSize12px alignRight">
+						    <span ng-show="customer.is_taxable['optId'] == 'Y'">{{anAddedPdt.tax_amount}}</span>
+						    <span ng-show="customer.is_taxable['optId'] == 'N'">&nbsp;</span>
+						</td>
+						<td class="rightBorderBlack1px fontSize14px alignRight">{{anAddedPdt.total_amount}}</td>
+					    </tr>
+					
+					    <tr ng-show="customer.is_taxable == 'N'">
+						<td colspan="4" class="saleAgainst">
+						    <b>
+							<span ng-show="customer.formh_received !== 'NA'">Sales against Form H (Exports sales only)</span>
+							<span ng-show="customer.formh_received === 'NA'">Sales against Form 43B</span>
+						    </b>
+						</td>
+						<td class="rightBorderBlack1px fontSize12px">&nbsp;</td>
+						<td class="rightBorderBlack1px fontSize12px">&nbsp;</td>
+						<td class="rightBorderBlack1px fontSize12px">&nbsp;</td>
+						<td class="rightBorderBlack1px fontSize12px">&nbsp;</td>
+						<td class="rightBorderBlack1px fontSize12px">&nbsp;</td>
+					    </tr>		
+			
+					    <tr><td colspan="9" class="bottomBorderBlack1px margin0padding0height1px"></td></tr>
+					
+					    <tr ng-show="adjustment > 0">
+						<td colspan="4" class="bottomBorderBlack1px fontSize11px alignLeft"><strong><em>Adjustment</em></strong></td>
+						<td colspan="4" class="rightBorderBlack1px bottomBorderBlack1px fontSize12px">&nbsp;</td>
+						<td class="rightBorderBlack1px bottomBorderBlack1px fontSize12px alignRight">{{adjustment}}</td>
+					    </tr>
+					
+					    <tr >
+						<td colspan="5" class="rightBorderBlack1px fontSize11px alignLeft"><strong><em>Total Rupees</em></strong></td>
+						<td class="rightBorderBlack1px fontSize12px">&nbsp;</td>
+						<td class="rightBorderBlack1px fontSize12px alignRight">
+						    <span ng-show="customer.is_taxable['optId'] == 'Y'">{{net_amount}}</span>
+						    <span ng-show="customer.is_taxable['optId'] == 'N'">&nbsp;</span>				
+						</td>
+						<td class="rightBorderBlack1px fontSize12px alignRight">
+						    <span ng-show="customer.is_taxable['optId'] == 'Y'">{{tax_amount}}</span>
+						    <span ng-show="customer.is_taxable['optId'] == 'N'">&nbsp;</span>				
+						</td>
+						<td class="rightBorderBlack1px fontSize12px alignRight"><b>{{grand_total}}</b></td>
+					    </tr>
+					
+					    <tr><td colspan="9" class="bottomBorderBlack1px margin0padding0height1px"></td></tr>
+					
+					    <tr>
+						<td colspan="2" class="rightBorderBlack1px fontSize12px alignLeft"><strong><em>Grand Total in words</em></strong></td>
+						<td colspan="7" class="rightBorderBlack1px fontSize12px alignLeft"><span class="fontSize12px">{{grand_total_in_words}}</span></td>
+					    </tr>
+					</table>
+					<br />
+					<table class="width100percent">
+					    <tr>
+						<td rowspan="4" class="width70percent alignjustify rightPadding12px">
+						    <span class="fontSize12px"><b>E&amp;OE</b></span><br />
+						    <span class="fontSize11px"><strong>DECLARATION</strong> (To be furnished by the seller)</span><br />
+						    <span class="fontSize11px alignjustify" ng-show="sale.type.id === 'Form No. 8'">Certified that all particulars shown in the above Tax Invoice are true and correct in all respects and the goods on which the tax charged and collected are in accordance with the provisions of the KVAT ACT 2003 and the rules made thereunder. It is also certified that my/our registration under KVAT ACT 2003 is not subject to any suspension/cancellation and is valid as on the date of this bill.</span>
+						    <span class="fontSize11px alignjustify" ng-show="sale.type.id === 'Form No. 8B'">(Copy to be retained with the seller)</span>
+						</td>
+						<td class="alignRight fontSize12px rightPadding13px">For NEW GRAMEEN FOODS</td>
+					    </tr>
+					    <tr><td class="alignRight">&nbsp;</td></tr>
+					    <tr><td class="alignRight">&nbsp;</td></tr>
+					    <tr><td class="alignRight fontSize11px rightPadding11px">Authorized Signature</td></tr>
+					    <tr ng-show="sale.vehicle_number"><td colspan="2" class="alignCenter fontSize12px">Vehicle No: {{sale.vehicle_number}}</td></tr>
+					    <tr ng-show="false"><td colspan="2" class="alignRight rightPadding12px"><input type="button" name="btn" value="Print" onclick="window.print();" id="printLink" /></td></tr>
+					</table>
+				    </td>
+				</tr>
+			    </table>
+			</td>		    
+		    </tr>
+		    <tr ng-show="sale.type" class="printLink">
+			<td class="width100percent topPadding10px bottomPadding10px rightPadding10px" align="right">
+			    <a href="javascript:void(0);" ng-click="printThisBill()" class="btn" title="Print Bill" tabindex="1"><i class="icon-print"> </i></a>&nbsp;
+			    <a href="javascript:void(0);" ng-click="editThisBill()" class="btn" title="Edit Bill" tabindex="2"><i class="icon-edit"> </i></a>&nbsp;
+			    <a href="javascript:void(0);" ng-click="deleteThisBill()" class="btn" title="Delete Bill" tabindex="3"><i class="icon-remove"> </i></a>
+			</td>
+		    </tr>
+		    <tr ng-show="!sale.type">
+			<td class="width100percent topPadding10px bottomPadding10px" align="center">No preview available</td>
+		    </tr>
+		</table>
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div> <!-- /row -->

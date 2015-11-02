@@ -1,0 +1,136 @@
+<div class="row" ng-controller="CompanyInfoCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">
+    <form name="CompanyInfoFrm" ng-submit="doUpdateSettings()" novalidate>	
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Application Details</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div class="fieldReq">
+				    <label for="siteName">Site Name:</label>
+				    <input data-ng-model="companyInfo.siteName" type="text" id="siteName" name="siteName" placeholder="Site Name" class="login" tabindex="1" required /> <br />
+				    <span class="errorSpan" ng-show="CompanyInfoFrm.siteName.$dirty && CompanyInfoFrm.siteName.$error.required">Site Name is required.</span>
+				</div> <!-- /field -->				
+			    </div> <!-- /login-fields -->		
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>	
+        </div> <!-- /widget-content -->
+	<div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Company Details</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"> </p>
+			    <div class="login-fields">
+				<div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="name">Company Name:</label>
+					    <input data-ng-model="companyInfo.name" type="text" id="name" name="name" placeholder="Company Name" class="login" tabindex="2" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.name.$dirty && CompanyInfoFrm.name.$error.required">Company Name is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="email">Email:</label>
+					    <input data-ng-model="companyInfo.email" type="email" id="email" name="email" placeholder="Email" class="login" tabindex="3" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.email.$dirty && CompanyInfoFrm.email.$error.required">Email is required.</span>
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.email.$dirty && CompanyInfoFrm.email.$error.email">Invalid email address.</span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="city">TIN No:</label>
+					    <input data-ng-model="companyInfo.tin_number" type="text" id="tin_number" name="tin_number" placeholder="TIN No" class="login" tabindex="4" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.tin_number.$dirty && CompanyInfoFrm.tin_number.$error.required">TIN No is required.</span>
+					</div> <!-- /field -->
+				    </div>
+				</div>
+				<div class="clearDiv"></div>					
+			    </div> <!-- /login-fields -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Company Contact Info</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"> </p>
+			    <div class="login-fields">
+				<div>
+				    <div class="width50Percent">
+					<div class="fieldReqExtra">
+					    <label for="address">Address:</label>
+					    <textarea data-ng-model="companyInfo.address" id="address" name="address" placeholder="Address" class="login" tabindex="5" required ></textarea> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.address.$dirty && CompanyInfoFrm.address.$error.required">Address is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="city">City:</label>
+					    <input data-ng-model="companyInfo.city" type="text" id="city" name="city" placeholder="City" class="login" tabindex="6" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.city.$dirty && CompanyInfoFrm.city.$error.required">City is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="state">State:</label>
+					    <input data-ng-model="companyInfo.state" type="text" id="state" name="state" placeholder="State" class="login" tabindex="7" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.state.$dirty && CompanyInfoFrm.state.$error.required">State is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="pincode">Pincode:</label>
+					    <input data-ng-model="companyInfo.pincode" type="text" id="pincode" name="pincode" placeholder="Pincode" class="login" tabindex="8" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.pincode.$dirty && CompanyInfoFrm.pincode.$error.required">Pincode is required.</span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="phone">Phone:</label>
+					    <input data-ng-model="companyInfo.phone" type="text" id="phone" name="phone" placeholder="Phone" class="login" tabindex="9" required /> <br />
+					    <span class="errorSpan" ng-show="CompanyInfoFrm.phone.$dirty && CompanyInfoFrm.phone.$error.required">Phone is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="mobile">Mobile:</label>
+					    <input data-ng-model="companyInfo.mobile" type="text" id="mobile" name="mobile" placeholder="Mobile" class="login" tabindex="10" /> <br />
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="fax">Fax:</label>
+					    <input data-ng-model="companyInfo.fax" type="text" id="fax" name="fax" placeholder="Fax" class="login" tabindex="11" /> <br />
+					</div> <!-- /field -->
+				    </div> <!-- /login-fields -->
+				    </div>	
+				</div>
+			    <div class="clearDiv"></div>
+			    <div class="login-actions">				
+				<button class="button btn btn-primary" tabindex="12" data-ng-disabled="!companyInfo.name || !companyInfo.email || !companyInfo.address || !companyInfo.city || !companyInfo.state || !companyInfo.pincode || !companyInfo.phone || !companyInfo.mobile || !companyInfo.fax || !companyInfo.tin_number">Update</button>				
+			    </div> <!-- .actions -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    </form>
+</div> <!-- /row -->

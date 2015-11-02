@@ -1,0 +1,90 @@
+<div class="row" ng-controller="ReportsCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="widget widget-table action-table leftMargin30px">
+        <div class="widget-header"> <i class="icon-edit"></i>
+            <h3>Manage Reports</h3>
+        </div>
+	
+	<div class="widget-content padding10px">
+	    <form name="ReportFrm" ng-submit="doManageReport()" novalidate >
+		<div class="account-container register">	
+		    <div class="content clearfix">		
+			<div class="login-fields">
+			    <div class="width20percentDiv">
+				<div class="fieldReq">
+				    <label for="type">Type:</label>
+				    <select tabindex="1" data-ng-model="type" data-ng-options="report_type.name for report_type in report_types track by report_type.id" class="width90percent">
+					<option value="">-- Choose type --</option>
+				    </select><br />
+				    <span class="errorSpan" ng-show="ReportFrm.type.$dirty && ReportFrm.type.$error.required">Type is required.</span>
+				</div> <!-- /field -->
+			    </div>
+			    <div class="width20percentDiv">
+				<div class="fieldReq">
+				    <label for="type">Financial Year:</label>
+				    <select tabindex="1" data-ng-model="type" data-ng-options="report_type.name for report_type in report_types track by report_type.id" class="width90percent">
+					<option value="">-- Choose type --</option>
+				    </select><br />
+				    <span class="errorSpan" ng-show="ReportFrm.type.$dirty && ReportFrm.type.$error.required">Type is required.</span>
+				</div> <!-- /field -->
+			    </div>
+			    <div class="width20percentDiv">
+				<div class="fieldReq">
+				    <label for="date">Start Date:</label>
+				    <input data-ng-model="report.start_date" type="date" id="date" name="date" placeholder="Start date" class="login width74percent" tabindex="2" autocomplete="on" required /> <br />
+				    <span class="errorSpan" ng-show="ReportFrm.start_date.$dirty && ReportFrm.start_date.$error.required">Start date is required.</span>
+				</div> <!-- /field -->					
+			    </div>
+			    <div class="width20percentDiv">
+				<div class="fieldReq">
+				    <label for="date">End Date:</label>
+				    <input data-ng-model="report.end_date" type="date" id="date" name="date" placeholder="End date" class="login width74percent" tabindex="3" autocomplete="on" required /> <br />
+				    <span class="errorSpan" ng-show="ReportFrm.end_date.$dirty && ReportFrm.end_date.$error.required">End date is required.</span>
+				</div> <!-- /field -->					
+			    </div>
+			    <div class="width20percentDiv">
+				<div class="fieldReq">
+				    <label for="type">Partner:</label>
+				    <select tabindex="1" data-ng-model="type" data-ng-options="report_type.name for report_type in report_types track by report_type.id" class="width90percent">
+					<option value="">-- Choose type --</option>
+				    </select><br />
+				    <span class="errorSpan" ng-show="ReportFrm.type.$dirty && ReportFrm.type.$error.required">Type is required.</span>
+				</div> <!-- /field -->
+			    </div>
+			</div>
+			
+			<div class="login-fields">
+			    <div class="width40Percent">
+				<div class="fieldReq">
+				    <label for="type">Bill Type:</label>
+				    <select tabindex="1" data-ng-model="bill_type" data-ng-options="bill_type.name for bill_type in bill_types track by bill_type.id" class="width90percent">
+					<option value="">-- Choose type --</option>
+				    </select><br />
+				    <span class="errorSpan" ng-show="ReportFrm.bill_type.$dirty && ReportFrm.bill_type.$error.required">Bill type is required.</span>
+				</div> <!-- /field -->
+			    </div>
+			    <div class="width30Percent">
+				<div class="fieldReq">
+				    <label for="date">Bill Status:</label>
+				    <select tabindex="1" data-ng-model="bill_status" data-ng-options="status.name for status in statusOptions track by status.id" class="width90percent">
+					<option value="">-- Choose type --</option>
+				    </select><br />
+				    <span class="errorSpan" ng-show="false"> </span>
+				</div> <!-- /field -->					
+			    </div>
+			    <div class="width30Percent">
+				<div class="fieldReq">
+				    <label for="date">Form H Status:</label>
+				    <select tabindex="1" data-ng-model="type" data-ng-options="report_type.name for report_type in report_types track by report_type.id" class="width90percent">
+					<option value="">-- Choose type --</option>
+				    </select><br />
+				    <span class="errorSpan" ng-show="ReportFrm.type.$dirty && ReportFrm.type.$error.required">Type is required.</span>
+				</div> <!-- /field -->					
+			    </div>
+			</div>
+		    </div>
+		</div>
+	    </form>
+        </div>
+        <!-- /widget -->
+    </div> 
+</div> <!-- /row -->

@@ -1,0 +1,97 @@
+<div class="row" ng-controller="BillSettingsCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Manage Financial Year</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <form name="FinYearFrm" ng-submit="doManageFinYear()" novalidate >
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div>
+				    <div class="width100Percent">
+					<div class="fieldReq">
+					    <label for="title">Title:</label>
+					    <input data-ng-model="fin.name" type="text" id="name" name="name" placeholder="Title" class="login" tabindex="1" required /> <br />
+					    <span class="errorSpan" ng-show="FinYearFrm.name.$dirty && FinYearFrm.name.$error.required">Title is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="code">Financial Year:</label>
+					    <input data-ng-model="fin.start_date" type="date" id="start_date" name="start_date" placeholder="Start Date" class="login width30percentImp" tabindex="2" required />&nbsp;-&nbsp;<input data-ng-model="fin.end_date" type="date" id="end_date" name="end_date" placeholder="End Date" class="login width30percentImp" tabindex="3" required /> <br />
+					    <span class="errorSpan" ng-show="(FinYearFrm.start_date.$dirty && FinYearFrm.start_date.$error.required) || (FinYearFrm.end_date.$dirty && FinYearFrm.end_date.$error.required)">From and To dates are required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="tax_rate">Tax Rate:</label>
+					    <input data-ng-model="fin.tax_rate" type="number" id="tax_rate" name="tax_rate" placeholder="Tax rate" class="login width62" tabindex="4" required min="0" /> %<br />
+					    <span class="errorSpan" ng-show="FinYearFrm.tax_rate.$dirty && FinYearFrm.tax_rate.$error.required">Tax rate is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="status">Status:</label>
+					    <label class="radio inline">
+						<input type="radio" id="status" name="status" tabindex="6" ng-model="fin.status" value="A"> Active
+					    </label>						    
+					    <label class="radio inline">
+						<input type="radio" id="status" name="status" tabindex="7" ng-model="fin.status" value="I"> Inactive
+					    </label>
+					</div> <!-- /field -->
+					<div class="login-actions">
+					    <input data-ng-model="fin.id" type="hidden" id="id" name="id" /> 
+					    <button class="button btn btn-primary" tabindex="8" data-ng-disabled="!fin.name || !fin.start_date || !fin.end_date || !fin.tax_rate">Save</button>				
+					    <a href="javascript:void(0);" ng-click="clearThisForm()" class="btn" title="Clear Form" tabindex="9"><i class="icon-refresh"> </i></a>
+					</div> <!-- .actions -->
+				    </div>
+				</div>
+				<div class="clearDiv"></div>
+			    </div> <!-- /login-fields -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		    </form>
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-bullseye"></i>
+              <h3>Financial Years</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content padding10px">
+	      <div ng-show="records.length" class="filterClass"><input ng-model="filterKey" id="search" class="login" placeholder="Filter text" />&nbsp;&nbsp;<input type="number" min="5" max="100" class="width62" ng-model="pageSize"></div>
+              <table class="table table-striped table-bordered allBorder">
+		<thead>
+                  <tr>
+		    <th class="width5percentTD">#</th>
+                    <th class="width35percentTD">Title</th>                    
+		    <th class="width30percentTD">Tax Rate</th>
+		    <th class="width10percentTD alignCenter">Status</th>
+                    <th>&nbsp;</th>
+                  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-show="!records.length"><td colspan="5" class="alignCenter">No records</td></tr>
+		  
+		  <tr dir-paginate="aRecord in records | itemsPerPage:pageSize | filter:filterKey" current-page="currentPage">
+		    <td>{{pageSize * (currentPage - 1) + ($index + 1)}}</td>
+                    <td>{{aRecord.name}}</td>
+		    <td>{{aRecord.tax_rate}} %</td>
+		    <td class="alignCenter"><img data-ng-src="img/{{aRecord.status}}.png" class="imageStatusStyle" /></td>
+                    <td class="alignCenter">
+                        <a href="javascript:void(0);" ng-click="viewAndEditFinRecord(aRecord)" class="btn" title="Edit"><i class="icon-file-alt"> </i></a>
+                    </td>
+                  </tr>
+		</tbody>
+              </table>
+	      <dir-pagination-controls class="floatRight"></dir-pagination-controls>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+          <!-- /widget -->
+    </div> <!-- /span6 -->
+</div> <!-- /row -->

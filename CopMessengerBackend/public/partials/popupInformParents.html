@@ -1,0 +1,35 @@
+<form name="CurFrm" ng-submit="doManageRecord()" novalidate >
+<div class="ngdialog-message">
+        
+        <h3>Inform Parents</h3>
+        <p>	Choose Incident Reported Date:
+		<input data-ng-model="record.date" type="date" id="date" name="date" placeholder="Incident date" class="login" tabindex="1" autocomplete="on" title="Incident date" />
+                <span class="errorSpan" ng-show="CurFrm.date.$dirty && CurFrm.date.$error.required">Incident date is required.</span>
+        </p>
+        <div class="btnBottomPadding">
+		<div class="width40Percent">
+			<label for="allRecords">Incidents:</label>
+			<select multiple="multiple" tabindex="2" data-ng-model="record.remainingincidents" data-ng-options="message.subject + ' - ' +message.sender for message in record.remincidents track by message.subject" class="multiSelectClass"> <!--ng-change="moveSelRecToRight(mapping.remainingcustomers)"-->
+			</select>
+		</div>
+		<div class="width20Percent">
+		    <a href="javascript:void(0);" ng-click="addRecordsToSelectedList()" class="btn" title="Add records to selected list" tabindex="3"><i class="icon-plus-sign"> </i></a><br /><br />
+		    <a href="javascript:void(0);" ng-click="removeRecordsFromSelectedList()" class="btn" title="Remove records from selected list" tabindex="4"><i class="icon-remove"> </i></a>
+		</div>
+		<div class="width40Percent">
+			<label for="selectedRecords">Selected Incidents:</label>
+			<select multiple="multiple" tabindex="5" data-ng-model="record.selectedincidents" data-ng-options="message.subject + ' ' +message.sender for message in record.selincidents track by message.subject" class="multiSelectClass"> <!--ng-change="moveSelRecToLeft(mapping.selectedcustomers)"-->
+			</select>
+		</div>
+		<div class="clearDiv"></div>
+	</div>
+        
+        
+					    
+        <!--<p>Status: {{status}}</p>-->
+</div>
+<div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('Cancel')">Cancel</button>
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('Save')">Send</button>
+</div>
+</form>

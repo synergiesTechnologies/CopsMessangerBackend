@@ -1,0 +1,160 @@
+<div class="row" ng-controller="MappingCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Manage Price Mapping</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <form name="MappingFrm" ng-submit="doManageMapping()" novalidate >
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="name">Mapping Name:</label>
+					    <input data-ng-model="mapping.name" type="text" placeholder="Mapping name" class="login" tabindex="1" required /> <br />
+					    <span class="errorSpan" ng-show="MappingFrm.name.$dirty && MappingFrm.name.$error.required">Mapping name is required.</span>
+					</div> <!-- /field -->									
+				    </div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="status">Status:</label>
+					    <label class="radio inline">
+						<input type="radio" id="status" name="status" tabindex="2" ng-model="mapping.status" value="A"> Active
+					    </label>						
+					    <label class="radio inline">
+						<input type="radio" id="status" name="status" tabindex="3" ng-model="mapping.status" value="I"> Inactive
+					    </label>
+					</div> <!-- /field -->
+				    </div>
+				</div>
+				<div class="clearDiv"></div>
+				<div class="btnBottomPadding">
+				    <div class="width40Percent">
+					    <label for="allCustomers">Customers:</label>
+					    <select multiple="multiple" tabindex="4" data-ng-model="mapping.remainingcustomers" data-ng-options="customer.name + ' ' +customer.code for customer in mapping.remcustomers track by customer.id" class="multiSelectClass"> <!--ng-change="moveSelRecToRight(mapping.remainingcustomers)"-->
+					    </select>
+				    </div>
+				    <div class="width20Percent">
+					<a href="javascript:void(0);" ng-click="addCustomersToSelectedList()" class="btn" title="Add customers to selected list" tabindex="4"><i class="icon-plus-sign"> </i></a><br /><br />
+					<a href="javascript:void(0);" ng-click="removeCustomersFromSelectedList()" class="btn" title="Remove customers from selected list" tabindex="5"><i class="icon-remove"> </i></a>
+				    </div>
+				    <div class="width40Percent">
+					    <label for="selectedCustomers">Selected Customers:</label>
+					    <select multiple="multiple" tabindex="5" data-ng-model="mapping.selectedcustomers" data-ng-options="customer.name + ' ' +customer.code for customer in mapping.selcustomers track by customer.id" class="multiSelectClass"> <!--ng-change="moveSelRecToLeft(mapping.selectedcustomers)"-->
+					    </select>
+				    </div>
+				    <div class="clearDiv"></div>
+				</div>
+				<div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="allCustomers">Price Mapping:</label>
+					    <input data-ng-model="mapping.searchkey" type="text" placeholder="Search product" class="login zeroMargin" tabindex="6" /> <br />
+					    <div class="filterDiv" ng-show="mapping.searchkey.length">
+						<ul class="filterUl">
+						    <a href="javascript:void(0);" ng-click="doAddProduct(rec)" ng-repeat="rec in mapping.remproducts | filter:mapping.searchkey | orderBy:'name'" class="filterHref"><li class="filterLi" >
+							{{ rec.name + ', ' + rec.code }}
+						    </li></a>
+						</ul>
+					    </div>
+					</div>
+				    </div>
+				    <div class="width50Percent">
+					<div class="fieldReq">    
+					    <label for="is_form8b">Choose this mapping for 'Form 8B' billing:</label>
+					    <input type="checkbox" ng-model="mapping.is_form8b" class="login" tabindex="7" ng-true-value="'Y'" ng-false-value="'N'"><br />
+					    <span class="errorSpan" ng-show="false"></span>
+					</div>    
+				    </div>
+				</div>
+				<div class="clearDiv"></div>				    
+				<div class="rightMarginDiv">
+				    <table class="table table-striped table-bordered">
+					<thead>
+					  <tr>
+					    <th class="width20percent">Product</th>
+					    <th>Rate / 1packet</th>
+					    <th>Rate / 1kg</th>
+					    <th>&nbsp;</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr ng-show="!mapping.selproducts.length"><td colspan="4" class="alignCenter">No records</td></tr>
+					  
+					  <tr ng-repeat="aPdt in mapping.selproducts">
+					    <td>{{aPdt.name}} <span class="codeSpan" ng-show="aPdt.code">({{aPdt.code}})</span></td>
+					    <td>
+						<input type="text" placeholder="Rs/packet" class="width62" ng-model="aPdt.priceperpacket" ng-change="clearPriceFields(aPdt,'kg')" />&nbsp;
+						<select tabindex="1" data-ng-model="aPdt.quantity_per_packet" data-ng-options="quantityPerPacket.name for quantityPerPacket in quantityPerPacketTypes track by quantityPerPacket.id" class="width90percent">
+						</select><br />
+					    </td>
+					    <td><input type="text" placeholder="Rs/kg" class="width62" ng-model="aPdt.priceperkg" ng-change="clearPriceFields(aPdt,'packet')" /><input type="hidden" ng-model="aPdt.id" /></td>
+					    <td class="alignCenter"><a href="javascript:void(0);" ng-click="doDeleteAddedRec(aPdt)" class="btn"><i class="icon-remove"> </i></a></td>
+					  </tr>
+					</tbody>
+				    </table>
+				</div>
+				<div class="clearDiv"></div>
+			    </div> <!-- /login-fields -->			    
+			    <div class="login-actions">
+				<input data-ng-model="mapping.id" type="hidden" id="id" name="id" /> 
+				<button class="button btn btn-primary" tabindex="18" data-ng-disabled="!mapping.name || !mapping.selcustomers.length || !mapping.selproducts.length">Save</button>				
+				<a href="javascript:void(0);" ng-click="clearThisForm()" class="btn" title="Clear Form" tabindex="19"><i class="icon-refresh"> </i></a>
+			    </div> <!-- .actions -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		    </form>
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-bullseye"></i>
+              <h3>Price Mappings</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content padding10px">
+	      <div ng-show="records.length" class="filterClass"><input ng-model="filterKey" id="search" class="login" placeholder="Filter text" />&nbsp;&nbsp;<input type="number" min="5" max="100" class="width62" ng-model="pageSize"></div>
+              <table class="table table-striped table-bordered allBorder">
+		<thead>
+                  <tr>
+		    <th class="width5percentTD">#</th>
+                    <th class="width35percentTD">Mapping Name</th>
+		    <th class="width30percentTD">Customers</th>
+		    <th class="width10percentTD alignCenter">Status</th>
+                    <th>&nbsp;</th>
+                  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-show="!records.length"><td colspan="5" class="alignCenter">No records</td></tr>
+		  
+                  <tr dir-paginate="aRecord in records | itemsPerPage:pageSize | filter:filterKey" current-page="currentPage">
+		    <td>{{pageSize * (currentPage - 1) + ($index + 1)}}</td>
+                    <td>{{aRecord.name}}</td>
+		    <td>{{aRecord.customerNames}}</td>
+		    <td class="alignCenter"><img data-ng-src="img/{{aRecord.status}}.png" class="imageStatusStyle" /></td>
+                    <td class="alignCenter">
+			<a href="javascript:void(0);" ng-click="viewAndEditRecord(aRecord)" class="btn" title="Edit"><i class="icon-file-alt"> </i></a>
+			<a href="javascript:void(0);" ng-click="doDeleteMapping(aRecord)" class="btn" title="Delete"><i class="icon-remove"> </i></a>
+                    </td>
+                  </tr>
+		</tbody>
+              </table>
+	      <dir-pagination-controls class="floatRight"></dir-pagination-controls>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+          <!-- /widget -->
+    </div> <!-- /span6 -->
+    <script>
+	$('#my-select').multiSelect();
+    </script>
+</div> <!-- /row -->

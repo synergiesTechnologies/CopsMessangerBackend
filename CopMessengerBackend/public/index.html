@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+<title>Cop Messenger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+  
+<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+<link type="text/css" href="css/bootstrap_responsive.min.css" rel="stylesheet" />
+<link type="text/css" href="css/googleapi.css" rel="stylesheet" />
+<link type="text/css" href="css/font_awesome.css" rel="stylesheet" />
+<link type="text/css" href="css/angular_busy.css" rel="stylesheet" />  
+<link type="text/css" href="css/pages/dashboard.css" rel="stylesheet" />
+<link type="text/css" href="css/pages/faq.css" rel="stylesheet" />
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+<link type="text/css" href="css/jquery.confirm.css" rel="stylesheet" />
+<link type="text/css" href="css/ngDialog.min.css" rel="stylesheet" />
+<link type="text/css" href="css/ngDialog-theme-default.min.css" rel="stylesheet" />
+<link type="text/css" href="css/ngDialog-theme-plain.min.css" rel="stylesheet" />
+<link type="text/css" href="css/app.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp" ng-controller="ParentCntrl" >
+<div class="navbar navbar-fixed-top " ng-controller="TemplateCntrl">
+  <ng-include src="navbarPath()"></ng-include> 
+</div>
+<div class="clearDiv"></div>
+<!-- /navbar -->
+<div class="subnavbar " ng-controller="TemplateCntrl">
+  <ng-include src="navsubbarPath()"></ng-include> 
+</div> <!-- /subnavbar -->
+<div class="clearDiv"></div>
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+        <div ng-view ></div>
+    </div> <!-- /container --> 
+  </div> <!-- /main-inner --> 
+</div> <!-- /main -->
+<div class="clearDiv"></div>
+<div class="footer ">
+  <div class="footer-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span12">&copy; 2015 Cop Messenger</div> <!-- /span12 --> 
+      </div> <!-- /row --> 
+    </div> <!-- /container --> 
+  </div> <!-- /footer-inner --> 
+</div> <!-- /footer -->
+<div class="clearDiv"></div>
+<script src="js/angular/angular.min.js"></script>
+<script src="js/angular/angular_animate.min.js" ></script>
+<script src="js/angular/angular_route.min.js"></script>
+<script src="js/angular/angular_resource.min.js"></script>
+<script src="js/angular/angular_filereader.min.js"></script>
+<script src="js/angular/angular_busy.js"></script>
+<script src="js/ngDialog.min.js"></script>
+<script src="js/app.js"></script>
+
+<script src="js/controllers/parent_c.js"></script>
+<script src="js/controllers/login_c.js"></script>
+<script src="js/controllers/template_c.js"></script>
+<script src="js/controllers/navigation_c.js"></script>
+<script src="js/controllers/home_c.js"></script>
+<script src="js/controllers/users_c.js"></script>
+<script src="js/controllers/messages_c.js"></script>
+<script src="js/controllers/settings_c.js"></script>
+<!--<script src="js/controllers/profile_c.js"></script>
+<script src="js/controllers/help_c.js"></script>
+<script src="js/controllers/companyinfo_c.js"></script>
+<script src="js/controllers/password_c.js"></script>
+<script src="js/controllers/product_c.js"></script>
+<script src="js/controllers/billing_c.js"></script>
+<script src="js/controllers/addbill_c.js"></script>
+<script src="js/controllers/purchase_c.js"></script>
+<script src="js/controllers/partners_c.js"></script>
+<script src="js/controllers/mapping_c.js"></script>
+<script src="js/controllers/billsettings_c.js"></script>
+<script src="js/controllers/backups_c.js"></script>
+<script src="js/controllers/stats_c.js"></script>
+<script src="js/controllers/reports_c.js"></script>-->
+
+<script src="js/services.js"></script>
+<script type="text/javascript" src="js/jquery_1.11.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/full_calendar/fullcalendar.min.js"></script>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/excanvas.min.js"></script> 
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-3d.js"></script>
+<script type="text/javascript" src="js/jquery.confirm.js"></script>
+<script type="text/javascript" src="js/dirPagination.js"></script>
+<script type="text/javascript" src="js/utility.js"></script>
+</body>
+</html>

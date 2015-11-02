@@ -1,0 +1,171 @@
+<div class="row" ng-controller="PurchaseCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Manage Purchase Bill</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <form name="PurchaseFrm" ng-submit="doManagePurchase()" novalidate >
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div>
+				    <div class="width30Percent">
+					<div class="fieldReq">
+					    <label for="type">Invoice Type:</label>
+					    <select tabindex="1" data-ng-model="purchase.type" data-ng-options="invoice_type.name for invoice_type in invoice_types track by invoice_type.id" class="width90percent">
+						<option value="">-- Choose invoice type --</option>
+					    </select><br />
+					    <span class="errorSpan" ng-show="PurchaseFrm.type.$dirty && PurchaseFrm.type.$error.required">Invoice type is required.</span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width30Percent">
+					<div class="fieldReq">
+					    <label for="bill_number">Invoice Number:</label>
+					    <input data-ng-model="purchase.bill_number" type="number" id="bill_number" name="bill_number" placeholder="Invoice number" class="login width90percent" tabindex="2" required /> <br />
+					    <span class="errorSpan" ng-show="PurchaseFrm.bill_number.$dirty && PurchaseFrm.bill_number.$error.required">Invoice number is required.</span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width40Percent">
+					<div class="fieldReq">
+					    <label for="date">Purchase Date:</label>
+					    <input data-ng-model="purchase.date" type="date" id="date" name="date" placeholder="Purchase date" class="login width74percent" tabindex="3" required /> <br />
+					    <span class="errorSpan" ng-show="PurchaseFrm.date.$dirty && PurchaseFrm.date.$error.required">Purchase date is required.</span>
+					</div> <!-- /field -->					
+				    </div>
+				</div>
+				<div class="clearDiv"></div>
+				<div>
+				    <div class="width70Percent">
+					<div class="fieldReq" >
+					    <label for="customer">Select Vendor:</label>
+					    <select tabindex="4" data-ng-model="vendor" data-ng-options="vendor.name + ' ' +vendor.code for vendor in vendors track by vendor.id" class="width90percent">
+						<option value="">-- Choose vendor --</option>
+					    </select><br />
+					    <span class="errorSpan" ng-show="PurchaseFrm.vendor.$dirty && PurchaseFrm.vendor.$error.required">Vendor is required.</span>
+					</div> <!-- /field -->					
+				    </div>
+				    <div class="width30Percent">
+					<div class="fieldReq">
+					    <label for="tax">Tax Rate (in %):</label>
+					    <input data-ng-model="purchase.tax_percentage" type="number" id="tax_percentage" name="tax_percentage" placeholder="Tax rate" class="login width66percent" tabindex="5" ng-change="calculateTotalAmount()" /> <br />
+					    <span class="errorSpan" ng-show="false"></span>
+					</div> <!-- /field -->
+				    </div>
+				</div>
+				<div class="clearDiv"></div>						
+				<div>
+				    <div class="width30Percent">
+					<div class="fieldReq">
+					    <label for="net">Net Amount:</label>
+					    <input data-ng-model="purchase.net_amount" type="number" id="net_amount" name="net_amount" placeholder="Net amount" class="login width90percent" tabindex="6" ng-change="calculateTotalAmount()" /> <br />
+					    <span class="errorSpan" ng-show="false"></span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width30Percent">
+					<div class="fieldReq">
+					    <label for="tax">Tax Amount:</label>
+					    <input data-ng-model="purchase.tax_amount" type="number" id="tax_amount" name="tax_amount" placeholder="Tax amount" class="login width90percent" tabindex="7" ng-change="calculateTotalAmount()" /> <br />
+					    <span class="errorSpan" ng-show="false"></span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width40Percent">
+					<div class="fieldReq">
+					    <label for="discount">Discount:</label>
+					    <input data-ng-model="purchase.discount" type="number" id="discount" name="discount" placeholder="Discount" class="login width74percent" tabindex="8" ng-change="calculateTotalAmount()" /> <br />
+					    <span class="errorSpan" ng-show="false"></span>
+					</div> <!-- /field -->					
+				    </div>
+				</div>    
+				<div class="clearDiv"></div>				
+				<div>
+				    <div class="width60Percent">
+					<div class="fieldReq">
+					    <label for="comments">Comments:</label>
+					    <textarea data-ng-model="purchase.comments" id="comments" name="comments" placeholder="Comments" class="login" tabindex="9" ></textarea> <br />
+					    <span class="errorSpan" ng-show="false"></span>
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width40Percent">
+					<div class="fieldReq">
+					    <label for="total">Total Amount: <span class="redColor"><b>{{purchase.total_amount}}</b></span></label>
+					    <!--<input data-ng-model="purchase.total_amount" type="number" id="total_amount" name="total_amount" placeholder="Total Amount" class="login width66percent" tabindex="10" required />-->
+					    <br />
+					    <span class="errorSpan" ng-show="PurchaseFrm.total_amount.$dirty && PurchaseFrm.total_amount.$error.required">Total amount is required.</span>
+					</div> <!-- /field -->					
+				    </div>
+				</div>
+				<div class="clearDiv"></div>
+				<div ng-show="purchase.type">
+				    <div class="width40Percent">
+					<div class="fieldReq">
+					    &nbsp;
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width30Percent" >
+					<div class="fieldReq">
+					    &nbsp;
+					</div> <!-- /field -->
+				    </div>
+				    <div class="width30Percent">
+					<div class="login-actions topPadding23px" >
+					    <input data-ng-model="purchase.id" type="hidden" id="id" name="id" /> 
+					    <button class="button btn btn-primary" tabindex="11" data-ng-disabled="!purchase.type || !purchase.bill_number || !purchase.date || !purchase.total_amount || !vendor">Save</button>				
+					    <a href="javascript:void(0);" ng-click="clearThisForm()" class="btn" title="Clear Invoice Details" tabindex="12"><i class="icon-refresh"> </i></a>
+					</div> <!-- .actions -->
+				    </div>
+				</div>
+				<div class="clearDiv"></div>
+			    </div> <!-- /login-fields -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		    </form>
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-bullseye"></i>
+              <h3>Purchase Bills</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content padding10px">
+	      <div ng-show="records.length" class="filterClass"><input ng-model="filterKey" id="search" class="login" placeholder="Filter text" />&nbsp;&nbsp;<input type="number" min="5" max="100" class="width62" ng-model="pageSize"></div>
+            <table class="table table-striped table-bordered allBorder">
+		<thead>
+                  <tr>
+		    <th class="width5percentTD">#</th>
+                    <th class="width25percentTD">Date  [Bill Number]</th>
+		    <th class="width35percentTD">Vendor Name</th>
+		    <th class="width10percentTD">Amount</th>
+                    <th>&nbsp;</th>
+                  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-show="!records.length"><td colspan="5" class="alignCenter">No records</td></tr>
+		  
+                  <tr dir-paginate="aRecord in records | itemsPerPage:pageSize | filter:filterKey" current-page="currentPage">
+		    <td>{{pageSize * (currentPage - 1) + ($index + 1)}}</td>
+                    <td>{{aRecord.date}} [<span class="redColor"><b>{{aRecord.bill_number}}</b></span>]</td>
+		    <td>{{aRecord.vendor_name}}</td>
+		    <td class="alignRight">{{aRecord.total_amount}}</td>
+                    <td class="alignCenter">
+			<a href="javascript:void(0);" ng-click="viewAndEditRecord(aRecord)" class="btn" title="Edit"><i class="icon-file-alt"> </i></a>
+			<a href="javascript:void(0);" ng-click="doDeleteBill(aRecord)" class="btn" title="Delete"><i class="icon-remove"> </i></a>
+                    </td>
+                  </tr>
+		</tbody>
+            </table>
+	    <dir-pagination-controls class="floatRight"></dir-pagination-controls>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+          <!-- /widget -->
+    </div> <!-- /span6 -->
+</div> <!-- /row -->

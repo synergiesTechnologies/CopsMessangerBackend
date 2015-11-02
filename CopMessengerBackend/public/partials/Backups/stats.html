@@ -1,0 +1,55 @@
+<div class="row" ng-controller="StatisticsCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+        <div class="span75">
+                <div class="widget widget-table action-table ">
+                        <div class="widget-header"> <i class="icon-signal"></i>
+                                <h3>Sale - Overall Monthly Comparison </h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                                <div id="linChartContainerSale"></div>
+                        </div> <!-- /widget-content --> 
+                </div> <!-- /widget -->
+        
+                <div class="widget widget-table action-table ">
+                        <div class="widget-header"> <i class="icon-signal"></i>
+                                <h3>Purchase - Overall Monthly Comparison </h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                                <div id="linChartContainerPurchase"></div>
+                        </div> <!-- /widget-content --> 
+                </div> <!-- /widget -->
+        </div>
+        <div class="span25">
+                <div class="widget widget-table action-table ">
+                        <div class="widget-header"> <i class="icon-signal"></i>
+                                <h3>Sale - Yearly Comparison</h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                                <div id="pieChartContainerSale"></div>
+                        </div> <!-- /widget-content --> 
+                </div> <!-- /widget -->
+                
+                <!-- /widget -->
+                <div class="widget widget-table action-table ">
+                        <div class="widget-header"> <i class="icon-signal"></i>
+                                <h3>Purchase - Yearly Comparison</h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                                <!--<canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>--> <!-- /area-chart -->
+                                <div id="pieChartContainerPurchase"></div>
+                        </div> <!-- /widget-content --> 
+                </div> <!-- /widget -->
+        </div>
+        <div class="widget widget-table action-table leftMargin30px">
+                <div class="widget-header"> <i class="icon-bullseye"></i>
+                    <h3>Current Financial Year Monthly Comparison - Form 8 & Form 8B Sales </h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content padding10px">
+                        <div id="colChartContainer"></div>
+                </div> <!-- /widget-content --> 
+        </div> <!-- /widget -->
+</div> <!-- /row -->

@@ -1,0 +1,33 @@
+<form name="CurFrm" ng-submit="doManageRecord()" novalidate >
+<div class="ngdialog-message">
+        
+        <h3>Post Incident</h3>
+        <p>
+                <input data-ng-model="record.subject" type="text" id="subject" name="subject" placeholder="Subject" class="login" tabindex="1" required /> <br />
+                <span class="errorSpan" ng-show="CurFrm.subject.$dirty && CurFrm.subject.$error.required">Subject is required.</span>
+        </p>
+        <p>
+                <select tabindex="2" data-ng-model="record.category" data-ng-options="category.name for category in categories track by category.name" class="login" required>
+                        <option value="">-- Choose Category --</option>
+                </select><br />
+                <span class="errorSpan" ng-show="CurFrm.category.$dirty && CurFrm.category.$error.required">Category is required.</span>
+        </p>
+        <p>
+                <textarea data-ng-model="record.details" id="details" name="details" placeholder="Message details" class="login" tabindex="3" required ></textarea> <br />
+		<span class="errorSpan" ng-show="CurFrm.details.$dirty && CurFrm.details.$error.required">Message details are required.</span>
+                
+        </p>
+        <p>
+                <input file-model="record.image" type="file" id="image" name="image" placeholder="Image" class="login" tabindex="4"  /> <br />
+		<span class="errorSpan" ng-show="false"></span>
+                <img data-ng-src="{{record.image}}" class="imageStyle" /><br />
+        </p>
+        
+					    
+        <!--<p>Status: {{status}}</p>-->
+</div>
+<div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('Cancel')">Cancel</button>
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('Save')">Send</button>
+</div>
+</form>

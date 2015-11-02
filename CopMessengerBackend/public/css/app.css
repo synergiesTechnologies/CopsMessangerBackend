@@ -1,0 +1,451 @@
+/* app css stylesheet */
+.span75{
+    width:700px;
+    margin-left: 30px;
+    float:left;
+    height: auto;
+}
+
+.span25{
+    width:430px;
+    margin-left: 30px;
+    float:left;
+    height: auto;
+}
+
+.login-actions {    
+    padding-bottom: 15px;
+}
+
+.fieldReq {
+    height: 75px;
+}
+
+.fieldReqExtra {
+    height: 90px;
+}
+
+.fieldReq input {
+    margin-bottom: 0px !important;
+}
+
+.codeSpan {
+    color:green;
+    /*font: 13px/1.7em 'Open Sans';*/
+}
+
+.errorSpan {
+    color:red;
+    /*font: 13px/1.7em 'Open Sans';*/
+}
+.messageSpan {
+    color:rgb(16, 205, 16);
+    /*font: 13px/1.7em 'Open Sans';*/
+    font-weight: bold;
+}
+
+.errorClassP {
+    height: 22px;
+}
+
+.rightMarginDiv{
+    margin-right: 8%;
+    height: auto;
+}
+.width99percent{
+    width:99% !important;
+}
+.width100percent{
+    width:100% !important;
+}
+.width90percent{
+    width:90% !important;
+}
+.width80percent{
+    width:80% !important;
+}
+.width70percent{
+    width:70% !important;
+}
+.width66percent{
+    width:66% !important;
+}
+.width74percent{
+    width:74% !important;
+}
+.width30percentImp{
+    width:30% !important;
+}
+.width62{
+    width:62px !important;
+}
+.width45{
+    width:45px !important;
+}
+.alignLeft {
+    text-align: left !important;
+}
+.alignCenter {
+    text-align: center !important;
+}
+.alignRight {
+    text-align: right !important;
+}
+.alignjustify {
+    text-align: justify !important;
+}
+.width70Percent{
+    width:70%;
+    float: left;
+    height: auto; 
+}
+.width60Percent {
+    width:60%;
+    float: left;
+    height: auto;
+}
+.width50Percent {
+    width:50%;
+    float: left;
+    height: auto;
+}
+.width40Percent {
+    width:40%;
+    float: left;
+    height: auto;
+}
+.width38Percent {
+    width:38%;
+    float: left;
+    height: auto;
+}
+.width30Percent {
+    width:30%;
+    float: left;
+    height: auto;
+}
+.width20percentDiv{
+    width: 20%;
+    float: left;
+    height: auto;
+}
+.width20Percent {
+    width:16%;
+    float: left;
+    height: auto;
+    text-align: left;
+    padding: 70px 0 0 16px;
+}
+.imageStyle{
+    width: 20%;
+    height: 20%;
+    border: 1px solid black;
+    padding: 1%;
+    margin-bottom: 1%;
+}
+.imageStatusStyle{
+    width: 24px;
+    height: 24px;
+    padding: 1%;
+    border: 0;
+}
+
+.redColor{
+    color:red;
+}
+.greenColor{
+    color:green;
+}
+
+.width40percentTD{
+    width: 40%;
+}
+.width35percentTD{
+    width: 35%;
+}
+.width30percentTD{
+    width: 30%;
+}
+.width25percentTD{
+    width: 25%;
+}
+.width20percentTD{
+    width: 20%;
+}
+.width10percentTD{
+    width: 10%;
+}
+.width5percentTD{
+    width: 5%;
+}
+.width15percentTD{
+    width: 15%;
+}
+
+.btnTopBottomPadding{
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+
+.btnBottomPadding{
+    padding-bottom: 6px !important;
+    height: auto;
+}
+.padding10px{
+    padding: 10px !important;
+}
+
+.clearDiv {
+    clear: both;
+}
+.main-inner {
+    height: auto;
+}
+
+.filterDiv{
+    width:218px;
+    overflow: visible;
+}
+
+.filterUl{
+    width:218px;
+    background-color: rgb(128, 181, 167);
+    border: 1px solid rgb(221, 221, 221);
+    list-style: none;
+    margin: 0;
+    z-index: 1;
+    position: absolute;
+}
+.filterLi{
+    padding: 6px !important;
+    background-color: rgb(128, 181, 167);
+    cursor: pointer !important;
+}
+
+.filterLi:hover{
+    background-color: rgb(0, 186, 139);
+    cursor: pointer !important;
+}
+
+.filterHref{
+    text-decoration: none !important;
+    color:white !important;
+}
+
+.filterHref:hover{
+    text-decoration: none !important;
+    color:white !important;
+}
+
+.zeroMargin {
+    margin: 0px !important;
+}
+
+.slide {
+    position: relative;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}
+.slide.ng-enter,
+.slide.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.slide.ng-enter {
+    top: 0%;
+    left: 100%;
+}
+.slide.ng-enter-active {
+    top: 0%;
+    left: 0%;
+}
+.slide.ng-leave {
+    top: 0%;
+    left: 0%;
+}
+.slide.ng-leave-active {
+    top: 0%;
+    left: -100%;
+}
+
+.fade {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 100%;
+    opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+}
+.fade.ng-enter-active {
+    opacity: 1;
+}
+.fade.ng-leave {
+    opacity: 1;
+}
+.fade.ng-leave-active {
+    opacity: 0;
+}
+
+.slidedown {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.slidedown.ng-enter,
+.slidedown.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.slidedown.ng-enter {
+    top: -100%;
+}
+.slidedown.ng-enter-active {
+    top: 0;
+}
+.slidedown.ng-leave {
+    top: 0;
+}
+.slidedown.ng-leave-active {
+    top: 100%;
+}
+
+.content {
+    -webkit-transition: -webkit-transform 1s;
+    -webkit-perspective: 600px;
+    padding-left: 40px;
+}
+.content .flip {
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 1s ease-in-out;
+}
+.content .flip.ng-enter {
+    -webkit-transform: rotateY(-180deg);
+}
+.content .flip.ng-enter-active {
+    -webkit-transform: rotateY(0deg);
+}
+.content .flip.ng-leave {
+    -webkit-transform: rotateY(0deg);
+}
+.content .flip.ng-leave-active {
+    -webkit-transform: rotateY(180deg);
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+    background-color: #B38270 !important;
+}
+
+.my-controller {
+  border: 1px solid #fcc;
+  padding: 5px;
+  margin: 3px;
+}
+.my-controller small {
+  color: #c99;
+}
+.other-controller {
+  border: 1px solid #ccf;
+  padding: 5px;
+  margin: 3px;
+}
+.other-controller small {
+  color: #99c;
+}
+.third-controller {
+  border: 1px solid #cfc;
+  padding: 5px;
+  margin: 3px;
+}
+.third-controller small {
+  color: #9c9;
+}
+
+.floatRight{
+    float: right;
+    /*padding-right: 10px;*/
+}
+
+.borderTopBottom {
+    border-top:1px solid #dddddd !important;
+    border-bottom:1px solid #dddddd !important;
+}
+
+.allBorder{
+     border:1px solid #dddddd !important;
+}
+
+.filterClass {
+    padding-top: 10px;
+    padding-right: 10px;
+    float: right;
+}
+
+.multiSelectClass{
+    height: 200px !important;
+    width: 170px !important;
+}
+.leftMargin30px {
+    margin-left: 30px;
+}
+
+@media (max-width: 1200px) {
+    .width80percent{
+        width:100%;
+        height: auto;
+    }
+    .width70Percent{
+        width:100%;
+        height: auto;
+    }
+    .width60Percent {
+        width:100%;
+        height: auto;
+    }
+    .width50Percent {
+        width:100%;
+        height: auto;
+    }
+    .width40Percent {
+        width:100%;
+        height: auto;
+    }
+    .width30Percent {
+        width:100%;
+        height: auto;
+    }
+    .width20Percent {
+        width:100%;
+        height: auto;
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+    .leftMargin30px {
+        margin-left: 0px;
+    }
+    
+    .span75{
+        width:100%;
+        height: auto;
+    }
+    .width20percentDiv{
+        width: 100%;
+        float: left;
+        height: auto;
+    }
+    .span25{
+        width:100%;
+        height: auto;
+    }
+}
