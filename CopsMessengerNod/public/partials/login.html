@@ -1,0 +1,64 @@
+<div class="row" ng-controller="LoginCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">
+    <div class="span6">
+        <div class="widget widget-nopad"  >
+            <div class="account-container register">	
+                <div class="clearfix" >		
+		    <h1>Administrative Area</h1>
+		    <h1>&nbsp;</h1>
+		    <div class="login-fields">
+			<h4>WARNING!!!</h4>
+			<h4 class="alignjustify">Unauthorized access or use of this system is strictly prohibited. Access or use of this system by unauthorized persons will lead disciplinary and/or legal action.</h4>				
+		    </div> <!-- /login-fields -->
+		    <h1>&nbsp;</h1>
+		    <div class="login-fields">				
+			<h5>For best view use either Google Chrome version 35.0.0 or above / IE 9 or above </h5>				
+		    </div> <!-- /login-fields -->			
+                </div> <!-- /content -->	
+            </div> <!-- /account-container -->
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    
+    <div class="span6">
+        <div class="widget widget-nopad"  >
+            <div class="account-container register">	
+                <div class="clearfix" >		
+                    <form name="curFrm" ng-submit="doLogin()" novalidate >
+			<h1>&nbsp;</h1>
+			<h6>
+			    <span ng-show="isLogin">Please enter your registered Email address and Password to enter Cop Messenger system.</span>
+			    <span ng-show="!isLogin">Please enter your registered Email address to reset your Password.</span>
+			</h6>
+                        <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			<div class="login-fields">				
+			    <div class="fieldReq">
+				<label for="email">Email:</label>
+				<input data-ng-model="login.email_cop_msg" type="email" id="email_cop_msg" name="email_cop_msg" value="" placeholder="Email" class="login" tabindex="1" required /> <br />
+				<span class="errorSpan" ng-show="curFrm.email_cop_msg.$dirty && curFrm.email_cop_msg.$error.required">Email is required.</span>
+				<span class="errorSpan" ng-show="curFrm.email_cop_msg.$dirty && curFrm.email_cop_msg.$error.email">Invalid Email address.</span>
+			    </div> <!-- /field -->
+				
+			    <div class="fieldReq" ng-show="isLogin">
+				<label for="password">Password:</label>	
+				<input data-ng-model="login.password_cop_msg" type="password" id="password_cop_msg" name="password_cop_msg" value="" placeholder="Password" class="login" tabindex="2" required /> <br />
+				<span class="errorSpan" ng-show="curFrm.password_cop_msg.$dirty && curFrm.password_cop_msg.$error.required">Password is required.</span>
+			    </div> <!-- /field -->				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions" ng-show="isLogin">				
+			    <button  class="button btn btn-primary btn-small" tabindex="4" data-ng-disabled="!login.email_cop_msg || !login.password_cop_msg">Login</button>
+			</div> <!-- .actions -->
+			<div class="login-actions" ng-show="!isLogin">				
+			    <button class="button btn btn-primary btn-small" tabindex="2" data-ng-disabled="!login.email_cop_msg">Reset Password</button>
+			</div> <!-- .actions -->
+			<div class="login-actions" ng-show="isLogin">				
+			    <a href="javascript:void(0);" ng-click="changeToResetPasswordForm()">Reset Password</a>				
+			</div> <!-- .actions -->
+			<div class="login-actions" ng-show="!isLogin">				
+			    <a href="javascript:void(0);" ng-click="changeToLoginForm()">Login</a>				
+			</div> <!-- .actions -->
+                    </form>		
+                </div> <!-- /content -->	
+            </div> <!-- /account-container -->
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+</div> <!-- /row -->

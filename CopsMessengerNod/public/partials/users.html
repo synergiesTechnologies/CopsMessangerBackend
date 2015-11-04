@@ -1,0 +1,141 @@
+<div class="row" ng-controller="UsersCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-pencil"></i>
+              <h3><span>Manage Users</span></h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <form name="CurFrm" ng-submit="doManageRecord()" novalidate >
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="Category">Category:</label>
+					    <select tabindex="1" data-ng-model="record.category" data-ng-options="category.name for category in categories track by category.name" class="login" required>
+						<option value="">-- Choose Category --</option>
+					    </select><br />
+					    <span class="errorSpan" ng-show="CurFrm.category.$dirty && CurFrm.category.$error.required">Category is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="Name">Name:</label>
+					    <input data-ng-model="record.name" type="text" id="name" name="name" placeholder="Name" class="login" tabindex="2" required /> <br />
+					    <span class="errorSpan" ng-show="CurFrm.name.$dirty && CurFrm.name.$error.required">Name is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="City">City:</label>
+					    <input data-ng-model="record.city" type="text" id="city" name="city" placeholder="City" class="login" tabindex="4" required /> <br />
+					    <span class="errorSpan" ng-show="CurFrm.city.$dirty && CurFrm.city.$error.required">City is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="Email">Email Address:</label>
+					    <input data-ng-model="record.email" type="text" id="email" name="email" placeholder="Email address" class="login" tabindex="6" required /> <br />
+					    <span class="errorSpan" ng-show="CurFrm.email.$dirty && CurFrm.email.$error.required">Email address is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="Password">Password:</label>
+					    <input data-ng-model="user.password" type="password" id="password" name="password" placeholder="Password" class="login" tabindex="8" required /> <br />
+					    <span class="errorSpan" ng-show="CurFrm.password.$dirty && CurFrm.password.$error.required">Password is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="Status">Status:</label>
+					    <label class="radio inline">
+						<input type="radio" id="status" name="status" tabindex="10" ng-model="record.status" value="A"> Active
+					    </label>						
+					    <label class="radio inline">
+						<input type="radio" id="status" name="status" tabindex="11" ng-model="record.status" value="I"> Inactive
+					    </label>
+					</div> <!-- /field -->
+					<div class="login-actions">
+					    <input data-ng-model="record.id" type="hidden" id="id" name="id" />
+					    <button class="button btn btn-primary btn-small" tabindex="12" data-ng-disabled="!record.category || !record.name || !record.address || !record.city || !record.district || !record.email || !record.mobile" title="Save Record">Save</button>				
+					    <a href="javascript:void(0);" ng-click="clearThisForm()" class="btn btn-small" title="Clear Form" tabindex="13"><i class="icon-refresh"> </i></a>
+					</div> <!-- .actions -->
+				    </div>
+				    <div class="width50Percent">
+					<div class="fieldReq">
+					    <label for="">&nbsp;</label>
+					    <span class="errorSpan" ng-show=false></span>
+					</div> <!-- /field -->
+					<div class="fieldReqExtra">
+					    <label for="Address">Address:</label>
+					    <textarea data-ng-model="record.address" id="address" name="address" placeholder="Address" class="login" tabindex="3" required ></textarea> <br />
+					    <span class="errorSpan" ng-show="CurFrm.address.$dirty && CurFrm.address.$error.required">Address is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="District">District:</label>
+					    <select tabindex="5" data-ng-model="record.district" data-ng-options="district.name for district in districts track by district.name" class="login" required>
+						<option value="">-- Choose District --</option>
+					    </select><br />
+					    <span class="errorSpan" ng-show="CurFrm.district.$dirty && CurFrm.district.$error.required">District is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="Mobile">Mobile Number:</label>
+					    <input data-ng-model="record.mobile" type="text" id="mobile" name="mobile" placeholder="Mobile number" class="login" tabindex="7" /> <br />
+					    <span class="errorSpan" ng-show="CurFrm.mobile.$dirty && CurFrm.mobile.$error.required">Mobile number is required.</span>
+					</div> <!-- /field -->
+					<div class="fieldReq">
+					    <label for="Confirm">Confirm Password:</label>
+					    <input data-ng-model="record.cpassword" type="password" id="cpassword" name="cpassword" placeholder="Confirm password" class="login" tabindex="9" required /> <br />
+					    <span class="errorSpan" ng-show="CurFrm.cpassword.$dirty && CurFrm.cpassword.$error.required">Confirm Password is required.</span>
+					</div> <!-- /field -->
+				    </div>
+				</div>
+				<div class="clearDiv"></div>
+			    </div> <!-- /login-fields -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		    </form>
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-list"></i>
+              <h3><span>Users</span></h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content padding10px">
+	      <div ng-show="records.length" class="filterClass"><input ng-model="filterKey" id="search" class="login" placeholder="Filter text" />&nbsp;&nbsp;<input type="number" min="5" max="100" class="width62" ng-model="pageSize"></div>	
+              <table class="table table-striped table-bordered allBorder">
+		<thead>
+                  <tr>
+		    <th class="width5percentTD">#</th>
+                    <th class="width20percentTD">Name</th>
+		    <th class="width15percentTD">Address</th>
+		    <th class="width10percentTD">District</th>
+		    <th class="width10percentTD">Category</th>
+		    <th class="width10percentTD alignCenter">Status</th>
+                    <th>&nbsp;</th>
+                  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-show="!records.length"><td colspan="7" class="alignCenter">No records</td></tr>
+                  <tr dir-paginate="aRecord in records | itemsPerPage:pageSize | filter:filterKey" current-page="currentPage">
+		    <td>{{pageSize * (currentPage - 1) + ($index + 1)}}</td>
+                    <td>{{aRecord.name}} <span class="codeSpan" ng-show="aRecord.code">({{aRecord.code}})</span></td>
+		    <td>{{aRecord.address}}</td>
+		    <td>{{aRecord.district.name}}</td>
+		    <td>{{aRecord.category.name}}</td>
+		    <td class="alignCenter"><img data-ng-src="img/{{aRecord.status}}.png" class="imageStatusStyle" /></td>
+                    <td class="alignCenter">
+			<a href="javascript:void(0);" ng-click="viewAndEditRecord(aRecord)" class="btn" title="Edit Record"><i class="icon-edit"> </i></a>
+			<a href="javascript:void(0);" ng-click="doDeleteRecord(aRecord)" class="btn" title="Delete Record"><i class="icon-trash"> </i></a>
+                    </td>
+                  </tr>
+		</tbody>
+              </table>
+	      <dir-pagination-controls class="floatRight"></dir-pagination-controls>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+          <!-- /widget -->
+    </div> <!-- /span6 -->
+</div> <!-- /row -->

@@ -1,0 +1,13 @@
+<div class="ngdialog-message">
+        <h3>{{subject}}</h3>
+        <p>Sender: {{sender}}</p>
+        <p>Date: {{date}}</p>
+        <p>Receiver: {{receiver}}</p>
+        <p>Category: {{category}}</p>
+        <p>{{details}}</p>
+        <!--<p>Status: {{status}}</p>-->
+</div>
+<div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('Cancel')">Cancel</button>
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('Save')">View Police Response</button>
+</div>

@@ -1,0 +1,87 @@
+<div class="row" ng-controller="SettingsCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <form name="CurFrm" ng-submit="doManageRecord()" novalidate >
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-pencil"></i>
+              <h3><span>Manage School Message Template</span></h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">		    
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div>
+				    <div class="fieldReq">
+					<label for="Subject">Subject:</label>
+					<input data-ng-model="record.subject" type="text" id="subject" name="subject" placeholder="Subject" class="login width70Percent" tabindex="1" required /> <br />
+					<span class="errorSpan" ng-show="CurFrm.subject.$dirty && CurFrm.subject.$error.required">Subject is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReqExtra">
+					<label for="Message">Message Template:</label>
+					<textarea data-ng-model="record.message" id="message" name="message" placeholder="Message template" class="login width70Percent" tabindex="2" required ></textarea> <br />
+					<span class="errorSpan" ng-show="CurFrm.message.$dirty && CurFrm.message.$error.required">Message template is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReq">
+					<label for="Signature">Signature:</label>
+					<input data-ng-model="record.signature" type="text" id="signature" name="signature" placeholder="signature" class="login width70Percent" tabindex="3" required /> <br />
+					<span class="errorSpan" ng-show="CurFrm.signature.$dirty && CurFrm.signature.$error.required">Signature is required.</span>
+				    </div> <!-- /field -->					
+				    <div class="login-actions">
+					&nbsp;<br />&nbsp;
+				    </div> <!-- .actions -->
+				</div>
+			    </div> <!-- /login-fields -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-nopad">
+	    <div class="widget-header"><i class="icon-pencil"></i>
+              <h3><span>Manage Common Message Template</span></h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">		    
+		    <div class="account-container register">	
+			<div class="content clearfix">		
+			    <p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+			    <div class="login-fields">
+				<div>
+				    <div class="fieldReq">
+					<label for="Subject">Subject:</label>
+					<input data-ng-model="record.subject_com" type="text" id="subject_com" name="subject_com" placeholder="Subject" class="login width70Percent" tabindex="1" required /> <br />
+					<span class="errorSpan" ng-show="CurFrm.subject_com.$dirty && CurFrm.subject_com.$error.required">Subject is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReqExtra">
+					<label for="Message">Message Template:</label>
+					<textarea data-ng-model="record.message_com" id="message_com" name="message_com" placeholder="Message template" class="login width70Percent" tabindex="2" required ></textarea> <br />
+					<span class="errorSpan" ng-show="CurFrm.message_com.$dirty && CurFrm.message_com.$error.required">Message template is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReq">
+					<label for="Signature">Signature:</label>
+					<input data-ng-model="record.signature_com" type="text" id="signature_com" name="signature_com" placeholder="signature" class="login width70Percent" tabindex="3" required /> <br />
+					<span class="errorSpan" ng-show="CurFrm.signature_com.$dirty && CurFrm.signature_com.$error.required">Signature is required.</span>
+				    </div> <!-- /field -->					
+				    <div class="login-actions">
+					<input data-ng-model="record.id" type="hidden" id="id" name="id" />
+					<button class="button btn btn-primary btn-small" tabindex="12" data-ng-disabled="!record.category || !record.name || !record.address || !record.city || !record.district || !record.email || !record.mobile" title="Save Record">Save</button>				
+				    </div> <!-- .actions -->
+				</div>
+			    </div> <!-- /login-fields -->			
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content -->
+    </div> <!-- /span6 -->
+    </form>
+</div> <!-- /row -->

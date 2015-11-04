@@ -1,0 +1,49 @@
+<div class="row" ng-controller="HomeCntrl" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">	
+    <div class="widget widget-table action-table leftMargin30px">
+        <div class="widget-header"> <i class="icon-comment"></i>
+            <h3>Today's Messages</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content padding10px">
+	    <div ng-show="records.length" class="filterClass">
+                <a href="javascript:void(0);" ng-click="postIncident()" class="btn btn-filter" title="Filter List" tabindex="1">Post Incident</a>&nbsp;&nbsp;
+                <a href="javascript:void(0);" ng-click="informParent()" class="btn btn-filter" title="Filter List" tabindex="2">Inform Parents</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input ng-model="filterKey" id="search" class="login" placeholder="Filter text" />&nbsp;&nbsp;<input type="number" min="5" max="100" class="width62" ng-model="pageSize">
+            </div>
+            <table class="table table-striped table-bordered allBorder">
+		<thead>
+                  <tr>
+		    <th class="width5percentTD">#</th>
+                    <th class="width15percentTD">Date</th>
+		    <th class="width25percentTD">Subject</th>
+		    <th class="width10percentTD">Sender</th>
+                    <th class="width10percentTD">Receiver</th>
+                    <th class="width15percentTD">Category</th>
+		    <th class="width10percentTD alignCenter">Status</th>
+                    <th class="alignCenter"><!--<a href="javascript:void(0);" ng-click="addNewBill()" class="btn" title="Add Bill"><i class="icon-plus"> </i></a>--></th>
+                  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-show="!records.length"><td colspan="8" class="alignCenter">No records</td></tr>
+		  
+                  <tr dir-paginate="aRecord in records | itemsPerPage:pageSize | filter:filterKey" current-page="currentPage">
+		    <td>{{pageSize * (currentPage - 1) + ($index + 1)}}</td>
+                    <td>{{aRecord.date}}</td>
+                    <td>{{aRecord.subject}}</td>
+		    <td>{{aRecord.sender}}</td>
+                    <td>{{aRecord.receiver}}</td>
+		    <td>{{aRecord.category.name}}</td>
+		    <td class="alignCenter"><img data-ng-src="img/{{aRecord.status}}.png" class="imageStatusStyle" title="{{aRecord.status}}" /></td>
+                    <td class="alignCenter">
+			<a href="javascript:void(0);" ng-click="viewRecordDetails(aRecord)" class="btn" title="View Details"><i class="icon-eye-open"> </i></a>
+                    </td>
+                  </tr>
+		</tbody>
+            </table>
+	    <dir-pagination-controls class="floatRight"></dir-pagination-controls>
+        </div>
+        <!-- /widget-content --> 
+    </div>
+    <!-- /widget -->	  
+</div> <!-- /row -->

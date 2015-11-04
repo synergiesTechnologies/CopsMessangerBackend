@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="span6">
+        <div class="widget widget-nopad" ng-controller="ProfileCntrl" >
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Update Profile</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <div class="account-container register">	
+			<div class="content clearfix" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">		
+			    <form name="ProfileFrm" ng-submit="doUpdateProfile()" novalidate>		
+				<p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+				<div class="login-fields">
+				    <div class="fieldReq">
+					<label for="name">Last Login Time:</label>
+					<span>{{login_time}}</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReq">
+					<label for="name">Name:</label>
+					<input data-ng-model="profile.name" type="text" id="name" name="name" placeholder="Name" class="login" tabindex="1" required /> <br />
+					<span class="errorSpan" ng-show="ProfileFrm.name.$dirty && ProfileFrm.name.$error.required">Name is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReq">
+					<label for="email">Email:</label>
+					<input data-ng-model="profile.email" type="email" id="email" name="email" placeholder="Email" class="login" tabindex="2" required /> <br />
+					<span class="errorSpan" ng-show="ProfileFrm.email.$dirty && ProfileFrm.email.$error.required">Email is required.</span>
+					<span class="errorSpan" ng-show="ProfileFrm.email.$dirty && ProfileFrm.email.$error.email">Invalid Email address.</span>
+				    </div> <!-- /field -->				
+				</div> <!-- /login-fields -->
+				
+				<div class="login-actions">				
+				    <button class="button btn btn-primary btn-large" tabindex="3" data-ng-disabled="!profile.name || !profile.email">Update</button>				
+				</div> <!-- .actions -->			
+			    </form>		
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>	
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+    <div class="span6">
+        <div class="widget widget-nopad" ng-controller="ProfileCntrl" >
+	    <div class="widget-header"><i class="icon-edit"></i>
+              <h3>Change Password</h3>
+            </div>
+	    <!-- /widget-header -->
+            <div class="widget-content">
+              <div class="widget big-stats-container">
+                <div class="widget-content">
+		    <div class="account-container register">	
+			<div class="content clearfix" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">		
+			    <form name="PasswordFrm" ng-submit="doUpdatePassword()" novalidate>		
+				<p class="errorClassP"><span class="{{msgSpanClass}}">{{msg}}</span></p>
+				<div class="login-fields">			
+				    <div class="fieldReq">
+					<label for="password">Current Password:</label>	
+					<input data-ng-model="changePassword.cpassword" type="password" id="cpassword" name="cpassword" placeholder="Current Password" class="login" tabindex="1" required /> <br />
+					<span class="errorSpan" ng-show="PasswordFrm.cpassword.$dirty && PasswordFrm.cpassword.$error.required">Current Password is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReq">
+					<label for="password">New Password:</label>	
+					<input data-ng-model="changePassword.npassword" type="password" id="npassword" name="npassword" placeholder="New Password" class="login" tabindex="2" required /> <br />
+					<span class="errorSpan" ng-show="PasswordFrm.npassword.$dirty && PasswordFrm.npassword.$error.required">New Password is required.</span>
+				    </div> <!-- /field -->
+				    <div class="fieldReq">
+					<label for="password">Re-Enter Password:</label>	
+					<input data-ng-model="changePassword.rpassword" type="password" id="rpassword" name="rpassword" placeholder="Re-Enter Password" class="login" tabindex="3" required /> <br />
+					<span class="errorSpan" ng-show="PasswordFrm.rpassword.$dirty && PasswordFrm.rpassword.$error.required">Re-Enter Password is required.</span>
+				    </div> <!-- /field -->
+				</div> <!-- /login-fields -->
+				
+				<div class="login-actions">				
+				    <button class="button btn btn-primary btn-large" tabindex="4" data-ng-disabled="!changePassword.cpassword || !changePassword.npassword || !changePassword.rpassword || !(changePassword.npassword == changePassword.rpassword)">Update</button>				
+				</div> <!-- .actions -->			
+			    </form>		
+			</div> <!-- /content -->	
+		    </div> <!-- /account-container -->
+		</div>
+	      </div>
+	    </div>  
+        </div> <!-- /widget-content --> 
+    </div> <!-- /span6 -->
+</div> <!-- /row -->
